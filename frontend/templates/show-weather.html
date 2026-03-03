@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Local Weather Forecast</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f9f9f9;
+            color: #222;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 0.5rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        .muted {
+            color: #555;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Local Weather Forecast</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Temp (°F)</th>
+                <th>Feels Like (°F)</th>
+                <th>Description</th>
+                <th>Wind (mph)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forecast in weather %}
+                <tr>
+                    <td>{{ forecast.time }}</td>
+                    <td>{{ forecast.temp|floatformat:1 }}</td>
+                    <td>{{ forecast.feels_like|floatformat:1 }}</td>
+                    <td>{{ forecast.description }}</td>
+                    <td>{{ forecast.wind|floatformat:1 }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="5" class="muted">No forecast data available.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
