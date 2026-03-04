@@ -33,9 +33,11 @@ class api_error_handling(Exception):
             case 101:
                 return("(Error 101) Failed to convert json too py")
             case 102:
-                return("(Error 102) API response has missing key value pairs")
+                return("(Error 102) API response is missing key value pairs")
             case 103:
                 return("(Error 103) The values in the key value pairs are not the correct data type")
+            case 104:
+                return("(Error 104) The data in the key value pairs is invalid but the data types are correct")
             case _:
                 return(f"(Error {self.API_status_code}) Unknown error occurred.")
 
@@ -65,7 +67,7 @@ class ForecastData:
     feels_like: float
     description: str
     wind: float
-
+    
 
 
 def get_api_key():
@@ -94,7 +96,7 @@ def json_to_py(raw, code): # Returns status code instead of data if the code is 
 
 
 
-def get_geocoding(city_name, state_code) :
+def get_geocoding(city_name, state_code, unit_type) :
 
     # Open Weather Map geocoding API document: https://openweathermap.org/api/geocoding-api
 
@@ -104,7 +106,9 @@ def get_geocoding(city_name, state_code) :
 
     country_code = "US"
 
-    URL_geocoding = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&limit={20}&appid={API_KEY}"
+    units = unit_type
+    
+    URL_geocoding = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&limit={20}&appid={API_KEY}&units={units}"
 
     raw_geocoding = requests.get(URL_geocoding)
     geocoding_status_code = raw_geocoding.status_code 
@@ -135,6 +139,8 @@ def organize_geocoding (geocoding):
             raise api_error_handling(102)
         except TypeError:
             raise api_error_handling(103)
+        except ValueError:
+            raise api_error_handling(104)
 
     return organized_geocoding_results
 
@@ -182,6 +188,8 @@ def organize_weather(weather):
             raise api_error_handling(102)
         except TypeError:
             raise api_error_handling(103)
+        except ValueError:
+            raise api_error_handling(104)
 
     
     return clean_forecasts

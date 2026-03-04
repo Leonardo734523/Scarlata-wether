@@ -10,12 +10,14 @@ def get_locations(request): # Processes city and state variables too return geoc
 
     state_code = request.POST.get("state")
 
+    unit_type = request.POST.get("unit")
+
     if not city_name or not state_code :
         return render(request, "input-error.html")
     
     state_code = state_code.upper()
 
-    locations = main.get_geocoding(city_name, state_code) # Can return a error message if the function fails
+    locations = main.get_geocoding(city_name, state_code, unit_type) # Can return a error message if the function fails
 
     if isinstance(locations, int): # Checks for error message
         error_message = main.api_error_handling(locations)
