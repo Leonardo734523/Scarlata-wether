@@ -19,19 +19,23 @@ class api_error_handling(Exception):
     def get_message(self) :
         match self.API_status_code :
             case 401:
-                return("(Error 401) There might be a problem with the API key, please contact the developer at leonardscarlata31@gmail.com")
+                return("(Error 401) There might be a problem with the API key")
             case 404:
-                return("(Error 404) Please input a valid location. If you are inputting a valid location and seeing this message, please contact the developer at leonardscarlata31@gmail.com")
+                return("(Error 404) Please input a valid location") #  You can also get the error if the format of your API request is incorrect
             case 429:
-                return("(Error 429) ScarlataWeather.com is down due to heavy traffic, I apologize for the inconvenience.")
-            case 400000 :
-                return("(Error 400000) The information you are requesting is outside of the developer's API subscription. If you are seeing this please contact the developer at leonardscarlata31@gmail.com")
-            case 500 | 502 | 503 | 504: # If one of these errors occur, please contact Open Weather Map due to the issue being caused on their end
-                return(f"""(Error {self.API_status_code}) My API Provider, "Open weather Map" is experiencing technical difficulties. Please contact the developer at leonardscarlata31@gmail.com""")
-            case 100 :
-                return("(Error 100) Json file valid, but empty.")
-            case 101 :
-                return("(Error 101) Failed to convert json too py.")
+                return("(Error 429) ScarlataWeather.com is down due to heavy traffic")
+            case 400000:
+                return("(Error 400000) The information you are requesting is outside of the API subscription")
+            case 500 | 502 | 503 | 504: # If one of these errors occur, please contact Open Weather Map
+                return(f"(Error {self.API_status_code}) The API Provider Open weather Map is experiencing technical difficulties")
+            case 100:
+                return("(Error 100) Json file valid, but empty")
+            case 101:
+                return("(Error 101) Failed to convert json too py")
+            case 102:
+                return("(Error 102) API response has missing key value pairs")
+            case 103:
+                return("(Error 103) The values in the key value pairs are not the correct data type")
             case _:
                 return(f"(Error {self.API_status_code}) Unknown error occurred.")
 
@@ -46,6 +50,7 @@ class API_key_retrieval_error(Exception):
 
 @dataclass
 class LocationData:
+    name: str
     state: str
     country: str
     lat: float
@@ -60,6 +65,7 @@ class ForecastData:
     feels_like: float
     description: str
     wind: float
+
 
 
 def get_api_key():
@@ -116,13 +122,19 @@ def organize_geocoding (geocoding):
     organized_geocoding_results = []
 
     for location_info in geocoding:
-        organized_geocoding_results.append( #check
-            LocationData(
+        
+        try:
+            organized_geocoding_results.append(LocationData(
+                location_info["name"],
                 location_info["state"],
                 location_info["country"],
                 location_info["lat"],
                 location_info["lon"]
                 ))
+        except KeyError:
+            raise api_error_handling(102)
+        except TypeError:
+            raise api_error_handling(103)
 
     return organized_geocoding_results
 
@@ -156,13 +168,20 @@ def organize_weather(weather):
     clean_forecasts = []
 
     for f in weather["list"]:
-        clean_forecasts.append(
-            ForecastData(
-                time=f["dt_txt"],
-                temp=f["main"]["temp"],
-                feels_like=f["main"]["feels_like"],
-                description=f["weather"][0]["description"],
-                wind=f["wind"]["speed"],
-                ))
+
+        try:
+            clean_forecasts.append(
+                ForecastData(
+                    time=f["dt_txt"],
+                    temp=f["main"]["temp"],
+                    feels_like=f["main"]["feels_like"],
+                    description=f["weather"][0]["description"],
+                    wind=f["wind"]["speed"],
+                    ))
+        except KeyError:
+            raise api_error_handling(102)
+        except TypeError:
+            raise api_error_handling(103)
+
     
     return clean_forecasts
