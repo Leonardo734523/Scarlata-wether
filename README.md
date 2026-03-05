@@ -176,7 +176,7 @@ This protects the API key.
 
 ```python
 weather_project/
-│
+├── config                  # Django settings
 ├── frontend                # Django app, manages the front end and HTTP requests
 │   ├── templates/               # HTML templates directory
 │   │   ├── home.html            # Search form page
