@@ -52,6 +52,7 @@ HTTP Requests: requests
 
 1️⃣ Clone the repository
 
+git clone https://github.com/Leonardo734523/Scarlata-wether.git
 
 2️⃣ Create and activate a virtual environment
 
