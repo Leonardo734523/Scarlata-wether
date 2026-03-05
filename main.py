@@ -67,7 +67,7 @@ class ForecastData:
     feels_like: float
     description: str
     wind: float
-    
+
 
 
 def get_api_key():
@@ -96,7 +96,7 @@ def json_to_py(raw, code): # Returns status code instead of data if the code is 
 
 
 
-def get_geocoding(city_name, state_code, unit_type) :
+def get_geocoding(city_name, state_code) :
 
     # Open Weather Map geocoding API document: https://openweathermap.org/api/geocoding-api
 
@@ -106,9 +106,9 @@ def get_geocoding(city_name, state_code, unit_type) :
 
     country_code = "US"
 
-    units = unit_type
-    
-    URL_geocoding = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&limit={20}&appid={API_KEY}&units={units}"
+    # One Call API 3.0 documentation: https://openweathermap.org/api/one-call-3?collection=one_call_api_3.0
+
+    URL_geocoding = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&limit={20}&appid={API_KEY}"
 
     raw_geocoding = requests.get(URL_geocoding)
     geocoding_status_code = raw_geocoding.status_code 
