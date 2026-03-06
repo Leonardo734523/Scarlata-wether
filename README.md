@@ -1,4 +1,4 @@
-## 🌦️ Scarlata Weather – Django Weather Forecast Website
+🌦️ Scarlata Weather – Django Weather Forecast Website
 
 A Django-based weather application that uses the OpenWeatherMap API to retrieve and display a 5-day weather forecast for U.S. locations.
 
@@ -9,10 +9,6 @@ Search for a city and state
 Select from matching locations
 
 View a detailed 5-day weather forecast including temperature, feels-like temperature, description, and wind speed
-
-
-
----
 
 🚀 Features
 
@@ -30,10 +26,6 @@ View a detailed 5-day weather forecast including temperature, feels-like tempera
 
 🔐 Secure API key management using environment variables
 
-
-
----
-
 🛠️ Tech Stack
 
 Backend Framework: Django
@@ -46,30 +38,19 @@ Environment Management: python-dotenv
 
 HTTP Requests: requests
 
----
-
 ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
 
-<<<<<<< HEAD
-=======
 git clone https://github.com/Leonardo734523/Scarlata-wether.git
->>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
 
 2️⃣ Create and activate a virtual environment
 
 python -m venv venv
 
-<<<<<<< HEAD
-source venv/bin/activate  # Mac/Linux
+source venv/bin/activate # Mac/Linux
 
-venv\Scripts\activate     # Windows
-=======
-source venv/bin/activate    # Mac/Linux
-
-venv\Scripts\activate       # Windows
->>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
+venv\Scripts\activate # Windows
 
 3️⃣ Install dependencies
 
@@ -77,15 +58,11 @@ pip install django requests python-dotenv
 
 4️⃣ Create an OpenWeatherMap API Key
 
-1. Sign up at OpenWeatherMap
+    Sign up at OpenWeatherMap
 
+    Generate a free API key
 
-2. Generate a free API key
-
-
-3. Create a env file for the API key:
-
-
+    Create a env file for the API key:
 
 name env file: api-key.env
 
@@ -95,9 +72,6 @@ APIKEY=your_api_key_here
 
 ⚠️ Make sure this file is in the same directory as main.py.
 
-
----
-
 ▶️ Running the Server
 
 python manage.py runserver
@@ -105,9 +79,6 @@ python manage.py runserver
 Visit:
 
 http://127.0.0.1:8000/
-
-
----
 
 🧠 Core Logic
 
@@ -121,7 +92,6 @@ Calls OpenWeatherMap Geocoding API
 
 Returns matching locations
 
-
 🔹 get_weather_forecast
 
 Takes latitude & longitude
@@ -134,7 +104,7 @@ Returns a structured 5-day weather forecast response
 
 organize_geocoding -> Takes data from get_geocoding and then organizes it into dataclasses stored in a list
 
-organize_weather ->  Takes data from get_weather_forecast and then organizes it into dataclasses stored in a list
+organize_weather -> Takes data from get_weather_forecast and then organizes it into dataclasses stored in a list
 
 🔹 json_to_py
 
@@ -147,8 +117,6 @@ Returns an error code if an error occurred
 🔹 get_api_key
 
 Retrieves the API key from api-key.env
-
----
 
 🛡️ Error Handling
 
@@ -166,31 +134,20 @@ Custom exceptions are implemented for:
 
 101 → JSON conversion error
 
-
 All errors are displayed to the user through a dedicated error template.
-
-
----
 
 🔐 Environment Variables
 
-The project securely loads the API key using: 
+The project securely loads the API key using:
 
 from dotenv import load_dotenv
 
 This protects the API key.
 
----
-
 📁 Project structure
 
-```python
 weather_project/
-<<<<<<< HEAD
-│
-=======
 ├── config                  # Django settings
->>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
 ├── frontend                # Django app, manages the front end and HTTP requests
 │   ├── templates/               # HTML templates directory
 │   │   ├── home.html            # Search form page
@@ -203,9 +160,6 @@ weather_project/
 ├── main.py                 # Core logic and API functions (geocoding, weather, json_to_py, organize functions)
 └── manage.py               # Django management script
 
-```
----
-
 📌 Future Improvements
 
 Add metric/imperial toggle
@@ -213,10 +167,3 @@ Add metric/imperial toggle
 Improve UI styling
 
 Add caching to reduce API calls
-
-<<<<<<< HEAD
-Deploy to production
-=======
-Deploy to production
->>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
-# Scarlata-wether
