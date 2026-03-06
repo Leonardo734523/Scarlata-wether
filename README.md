@@ -1,6 +1,6 @@
-## 🌦️ Scarlata Weather – Django Weather Forecast Website
+# 🌦️ Scarlata Weather – Django Weather Forecast Website
 
-# A Django-based weather application that uses the OpenWeatherMap API to retrieve and display a 5-day weather forecast for U.S. locations.
+## A Django-based weather application that uses the OpenWeatherMap API to retrieve and display a 5-day weather forecast for U.S. locations.
 
 Users can:
 
