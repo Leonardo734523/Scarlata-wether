@@ -10,8 +10,6 @@ Select from matching locations
 
 View a detailed 5-day weather forecast including temperature, feels-like temperature, description, and wind speed
 
-
-
 🚀 Features
 
 🌍 City + State geolocation search
@@ -28,7 +26,7 @@ View a detailed 5-day weather forecast including temperature, feels-like tempera
 
 🔐 Secure API key management using environment variables
 
-
+🌐 Website link : https://scarlata-wether--leonardoscarla2.replit.app
 
 🛠️ Tech Stack
 
