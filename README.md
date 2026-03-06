@@ -40,6 +40,8 @@ Environment Management: python-dotenv
 
 HTTP Requests: requests
 
+Host: Replit
+
 ⚙️ Installation & Setup
 
 1️⃣ Clone the repository
