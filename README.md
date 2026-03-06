@@ -145,7 +145,7 @@ from dotenv import load_dotenv
 This protects the API key.
 
 📁 Project structure
-
+```python
 weather_project/
 ├── config                  # Django settings
 ├── frontend                # Django app, manages the front end and HTTP requests
@@ -159,6 +159,7 @@ weather_project/
 ├── api-key.env             # API key storage (gitignored)
 ├── main.py                 # Core logic and API functions (geocoding, weather, json_to_py, organize functions)
 └── manage.py               # Django management script
+```
 
 📌 Future Improvements
 
