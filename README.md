@@ -58,11 +58,11 @@ pip install django requests python-dotenv
 
 4️⃣ Create an OpenWeatherMap API Key
 
-    Sign up at OpenWeatherMap
+Sign up at OpenWeatherMap
 
-    Generate a free API key
+Generate a free API key
 
-    Create a env file for the API key:
+Create a env file for the API key:
 
 name env file: api-key.env
 
