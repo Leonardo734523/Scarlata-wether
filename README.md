@@ -52,14 +52,24 @@ HTTP Requests: requests
 
 1️⃣ Clone the repository
 
+<<<<<<< HEAD
+=======
+git clone https://github.com/Leonardo734523/Scarlata-wether.git
+>>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
 
 2️⃣ Create and activate a virtual environment
 
 python -m venv venv
 
+<<<<<<< HEAD
 source venv/bin/activate  # Mac/Linux
 
 venv\Scripts\activate     # Windows
+=======
+source venv/bin/activate    # Mac/Linux
+
+venv\Scripts\activate       # Windows
+>>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
 
 3️⃣ Install dependencies
 
@@ -176,7 +186,11 @@ This protects the API key.
 
 ```python
 weather_project/
+<<<<<<< HEAD
 │
+=======
+├── config                  # Django settings
+>>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
 ├── frontend                # Django app, manages the front end and HTTP requests
 │   ├── templates/               # HTML templates directory
 │   │   ├── home.html            # Search form page
@@ -200,4 +214,9 @@ Improve UI styling
 
 Add caching to reduce API calls
 
+<<<<<<< HEAD
 Deploy to production
+=======
+Deploy to production
+>>>>>>> 645830cb89650328319ae689fddb9222ec5eda20
+# Scarlata-wether
