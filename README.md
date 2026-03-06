@@ -10,6 +10,8 @@ Select from matching locations
 
 View a detailed 5-day weather forecast including temperature, feels-like temperature, description, and wind speed
 
+
+
 🚀 Features
 
 🌍 City + State geolocation search
@@ -25,6 +27,8 @@ View a detailed 5-day weather forecast including temperature, feels-like tempera
 ⚠️ Custom API error handling with user-friendly messages
 
 🔐 Secure API key management using environment variables
+
+
 
 🛠️ Tech Stack
 
